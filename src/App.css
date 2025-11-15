@@ -106,7 +106,7 @@
 .character-portrait {
   /* Portrait area - left sidebar */
   flex-shrink: 0;
-  min-height: 250px; /* Can adjust individually */
+  min-height: 300px; /* Can adjust individually */
 }
 
 .status-area {
@@ -118,25 +118,30 @@
 .equipment-display {
   /* Equipment display - left sidebar */
   flex: 1; /* Takes remaining space */
-  min-height: 200px;
+  min-height: 450px;
 }
 
 .world-map {
   /* World map / enemy portrait - right sidebar */
   flex-shrink: 0;
-  min-height: 250px; /* Can adjust individually */
+  min-height: 350px; /* Can adjust individually */
 }
 
 .skills-display {
   /* Compact skills display - right sidebar */
   flex-shrink: 0;
+  flex: 1;
   min-height: 120px; /* Can adjust individually */
 }
 
 .inventory {
   /* Inventory grid - right sidebar */
   flex: 1; /* Takes remaining space */
-  min-height: 200px;
+  min-height: 450px;
+  max-height: 450px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* Center Column Elements */

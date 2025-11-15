@@ -3,7 +3,11 @@
  */
 
 import eventsData from '../data/events.json';
+import itemsData from '../data/items.json';
+import storesData from '../data/stores.json';
 import type { GameEvent, Choice, ContinueBackConfig } from '../types/game';
+import type { Item } from '../types/items';
+import type { Store } from '../types/stores';
 
 class GameFlowManager {
   private events: Map<string, GameEvent>;
@@ -34,7 +38,6 @@ class GameFlowManager {
       this.currentEventId = eventId;
       return this.getCurrentEvent() || null;
     }
-    console.warn(`Event ${eventId} not found`);
     return null;
   }
 
@@ -54,22 +57,24 @@ class GameFlowManager {
         break;
       
       case 'skill_check':
-        // TODO: Implement skill check logic
         if (choice.target) {
           return this.navigateTo(choice.target);
         }
         break;
       
       case 'open_inventory':
-        // TODO: Open inventory UI
+        return this.getCurrentEvent() || null;
+      
+      case 'add_item':
+        if (choice.target) {
+          return this.navigateTo(choice.target);
+        }
         return this.getCurrentEvent() || null;
       
       case 'combat':
-        // TODO: Enter combat mode
         return this.getCurrentEvent() || null;
       
       default:
-        console.warn(`Unknown action: ${choice.action}`);
         return this.getCurrentEvent() || null;
     }
 
@@ -127,6 +132,30 @@ class GameFlowManager {
   }
 
   /**
+   * Check if inventory is accessible
+   * Default: accessible unless event type is 'dialogue' or inventoryAccessible is explicitly false
+   */
+  isInventoryAccessible(): boolean {
+    const currentEvent = this.getCurrentEvent();
+    if (!currentEvent) {
+      return true; // Default to accessible
+    }
+
+    // If explicitly set, use that value
+    if (currentEvent.inventoryAccessible !== undefined) {
+      return currentEvent.inventoryAccessible;
+    }
+
+    // Default: disable for dialogue events
+    if (currentEvent.type === 'dialogue') {
+      return false;
+    }
+
+    // Default: accessible for other event types
+    return true;
+  }
+
+  /**
    * Handle continue action
    */
   handleContinue(): GameEvent | null {
@@ -135,12 +164,10 @@ class GameFlowManager {
       return this.getCurrentEvent() || null;
     }
 
-    // Handle continue action based on type
     if (continueConfig.action === 'navigate' && continueConfig.target) {
       return this.navigateTo(continueConfig.target);
     }
     
-    // Add more continue action types as needed
     return this.getCurrentEvent() || null;
   }
 
@@ -153,13 +180,85 @@ class GameFlowManager {
       return this.getCurrentEvent() || null;
     }
 
-    // Handle back action based on type
     if (backConfig.action === 'navigate' && backConfig.target) {
       return this.navigateTo(backConfig.target);
     }
     
-    // Add more back action types as needed
     return this.getCurrentEvent() || null;
+  }
+
+  /**
+   * Get item by ID
+   */
+  getItemById(itemId: string): Item | null {
+    const items = (itemsData as { items: Item[] }).items;
+    return items.find(item => item.id === itemId) || null;
+  }
+
+  /**
+   * Get store by event ID
+   */
+  getStoreByEventId(eventId: string): Store | null {
+    const stores = (storesData as { stores: Store[] }).stores;
+    return stores.find(store => store.id === eventId) || null;
+  }
+
+  /**
+   * Check if current event is a store
+   */
+  isStore(): boolean {
+    const currentEvent = this.getCurrentEvent();
+    if (!currentEvent) return false;
+    return this.getStoreByEventId(currentEvent.id) !== null;
+  }
+
+  /**
+   * Get store item price by item ID
+   * Returns null if store doesn't stock the item (unless it's a general store)
+   * For general store, checks storePrices first, then uses default
+   */
+  getStoreItemPrice(storeId: string, itemId: string, storePrices?: Record<string, number>): number | null {
+    const store = this.getStoreByEventId(storeId);
+    if (!store) return null;
+    
+    // Check if store stocks the item
+    const storeItem = store.items.find(item => item.itemId === itemId);
+    if (storeItem) {
+      return storeItem.price;
+    }
+    
+    if (store.isGeneralStore) {
+      if (storePrices && storePrices[itemId] !== undefined) {
+        return storePrices[itemId];
+      }
+      return 10;
+    }
+    
+    return null;
+  }
+
+  /**
+   * Check if a store stocks an item or accepts it (general store)
+   */
+  storeStocksItem(storeId: string, itemId: string): boolean {
+    const store = this.getStoreByEventId(storeId);
+    if (!store) return false;
+    
+    // General store accepts any item
+    if (store.isGeneralStore) {
+      return true;
+    }
+    
+    // Other stores only accept items they stock
+    return store.items.some(item => item.itemId === itemId);
+  }
+
+  /**
+   * Check if store is a general store
+   */
+  isGeneralStore(storeId: string): boolean {
+    const store = this.getStoreByEventId(storeId);
+    return store?.isGeneralStore === true;
   }
 }
 

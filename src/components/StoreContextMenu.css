@@ -1,0 +1,76 @@
+.store-context-menu {
+  position: fixed;
+  background-color: #2a2a2a;
+  border: 2px solid #555;
+  border-radius: 4px;
+  min-width: 150px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  font-size: 0.9rem;
+}
+
+.context-menu-header {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+}
+
+.item-name {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.item-price {
+  color: #ffd700;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.context-menu-divider {
+  height: 1px;
+  background-color: #444;
+  margin: 0.25rem 0;
+}
+
+.context-menu-actions {
+  padding: 0.25rem;
+}
+
+.context-menu-action {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 2px;
+  font-size: 0.9rem;
+  transition: background-color 0.15s ease;
+}
+
+.context-menu-action:hover {
+  background-color: #3a3a3a;
+}
+
+.buy-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.buy-options-label {
+  padding: 0.25rem 0.5rem;
+  color: #aaa;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.buy-action {
+  font-weight: 500;
+}
+

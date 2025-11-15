@@ -1,32 +1,63 @@
 {
   "items": [
     {
-      "id": "sword_basic",
-      "name": "Basic Sword",
-      "description": "A simple iron sword.",
+      "id": "sword_iron",
+      "name": "Iron Sword",
+      "description": "A sturdy iron sword with a well-worn hilt. The blade shows signs of use but remains sharp. Good for combat.",
       "type": "weapon",
-      "stackable": false,
-      "maxQuantity": 1,
-      "image": "/assets/items/sword_basic.png",
-      "stats": {
-        "damage": 10,
-        "accuracy": 0.8,
-        "cooldown": 3
-      }
+      "icon": "⚔️",
+      "examineImage": "/assets/placeholder.svg",
+      "defaultAction": "equip",
+      "availableActions": ["equip", "examine", "drop"]
     },
     {
       "id": "potion_health",
       "name": "Health Potion",
-      "description": "Restores 50 HP.",
+      "description": "Restores health when consumed.",
       "type": "consumable",
-      "stackable": true,
-      "maxQuantity": 99,
-      "image": "/assets/items/potion_health.png",
-      "effect": {
-        "type": "heal",
-        "value": 50
-      }
+      "icon": "🧪",
+      "maxStack": 10,
+      "defaultAction": "drink",
+      "availableActions": ["drink", "examine", "drop"]
+    },
+    {
+      "id": "bread",
+      "name": "Bread",
+      "description": "A simple loaf of bread. Restores a small amount of health.",
+      "type": "consumable",
+      "icon": "🍞",
+      "maxStack": 20,
+      "defaultAction": "eat",
+      "availableActions": ["eat", "examine", "drop"]
+    },
+    {
+      "id": "leather_armor",
+      "name": "Leather Armor",
+      "description": "Light leather armor. Provides basic protection.",
+      "type": "armor",
+      "icon": "🛡️",
+      "defaultAction": "equip",
+      "availableActions": ["equip", "examine", "drop"]
+    },
+    {
+      "id": "herb_common",
+      "name": "Common Herb",
+      "description": "A common herb used in alchemy.",
+      "type": "material",
+      "icon": "🌿",
+      "maxStack": 50,
+      "defaultAction": "use",
+      "availableActions": ["use", "examine", "drop"]
+    },
+    {
+      "id": "key_rusty",
+      "name": "Rusty Key",
+      "description": "An old, rusty key with intricate engravings that have been worn down by time. The metal is pitted and discolored, but the key still seems functional. It might open something important.",
+      "type": "misc",
+      "icon": "🗝️",
+      "examineImage": "/assets/placeholder.svg",
+      "defaultAction": "use",
+      "availableActions": ["use", "examine", "drop"]
     }
   ]
 }
-

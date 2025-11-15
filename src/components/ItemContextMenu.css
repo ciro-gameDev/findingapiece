@@ -1,0 +1,86 @@
+.item-context-menu {
+  position: fixed;
+  background-color: #2a2a2a;
+  border: 2px solid #555;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  min-width: 150px;
+  padding: 0.25rem 0;
+  font-size: 0.9rem;
+}
+
+.context-menu-header {
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #444;
+}
+
+.item-name {
+  font-weight: 600;
+  color: #fff;
+}
+
+.item-quantity {
+  color: #aaa;
+  font-size: 0.85rem;
+}
+
+.context-menu-divider {
+  height: 1px;
+  background-color: #444;
+  margin: 0.25rem 0;
+}
+
+.context-menu-actions {
+  display: flex;
+  flex-direction: column;
+}
+
+.context-menu-action {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #ddd;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  font-size: 0.9rem;
+}
+
+.context-menu-action:hover {
+  background-color: #3a3a3a;
+  color: #fff;
+}
+
+.context-menu-action:active {
+  background-color: #4a4a4a;
+}
+
+.sell-action {
+  color: #4a9eff;
+  font-weight: 600;
+}
+
+.sell-action:hover {
+  background-color: #2a4a6a;
+  color: #6ab0ff;
+}
+
+.sell-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.sell-options-label {
+  padding: 0.25rem 0.75rem;
+  color: #aaa;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+

@@ -1,0 +1,43 @@
+{
+  "stores": [
+    {
+      "id": "general_store",
+      "name": "General Store",
+      "isGeneralStore": true,
+      "items": [
+        {
+          "itemId": "potion_health",
+          "price": 25,
+          "stock": 10
+        },
+        {
+          "itemId": "bread",
+          "price": 5,
+          "stock": 20
+        },
+        {
+          "itemId": "herb_common",
+          "price": 3,
+          "stock": 50
+        }
+      ]
+    },
+    {
+      "id": "blacksmith_shop",
+      "name": "Blacksmith's Forge",
+      "items": [
+        {
+          "itemId": "sword_iron",
+          "price": 150,
+          "stock": 3
+        },
+        {
+          "itemId": "leather_armor",
+          "price": 100,
+          "stock": 2
+        }
+      ]
+    }
+  ]
+}
+

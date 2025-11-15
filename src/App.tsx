@@ -1,6 +1,8 @@
 import TextWindow from './components/TextWindow'
 import ImageDisplay from './components/ImageDisplay'
 import ActionBar from './components/ActionBar'
+import Inventory from './components/Inventory'
+import Store from './components/Store'
 import { useGameFlowStore } from './store/useGameFlowStore'
 import './App.css'
 
@@ -11,10 +13,25 @@ function App() {
     currentChoices,
     continueConfig,
     backConfig,
+    inventoryAccessible,
+    isExamining,
+    examineText,
+    examineImage,
+    currentStore,
     handleChoice,
     handleContinue,
     handleBack
   } = useGameFlowStore()
+
+  // Use examine content if examining, otherwise use normal content
+  const displayText = isExamining && examineText ? examineText : currentText
+  // If examining, use examineImage if provided, otherwise keep current image
+  const displayImage = isExamining 
+    ? (examineImage || currentImage) 
+    : currentImage
+
+  // Check if we're in a store
+  const isInStore = currentStore !== null
 
   return (
     <div className="app">
@@ -41,23 +58,30 @@ function App() {
           <div className="center-column">
             <div className="center-top">
               <div className="ui-panel main-image">
-                <ImageDisplay 
-                  imageSrc={currentImage || "/assets/placeholder.svg"} 
-                  alt="Main Scene Image"
-                  className="scene"
-                />
+                {isInStore ? (
+                  <Store 
+                    store={currentStore}
+                    backgroundImage={displayImage}
+                  />
+                ) : (
+                  <ImageDisplay 
+                    imageSrc={displayImage || "/assets/placeholder.svg"} 
+                    alt="Main Scene Image"
+                    className="scene"
+                  />
+                )}
               </div>
             </div>
             <div className="center-bottom">
               <div className="ui-panel action-bar">
                 <ActionBar 
-                  choices={currentChoices}
+                  choices={isInStore ? [] : currentChoices}
                   onChoiceSelect={handleChoice}
                 />
               </div>
               <div className="ui-panel main-text">
                 <TextWindow 
-                  text={currentText}
+                  text={displayText}
                   onContinue={handleContinue}
                   onBack={handleBack}
                   continueConfig={continueConfig}
@@ -80,7 +104,7 @@ function App() {
               <div className="panel-label">Compact Skills Display</div>
             </div>
             <div className="ui-panel inventory">
-              <div className="panel-label">Inventory</div>
+              <Inventory isAccessible={inventoryAccessible} />
             </div>
           </div>
         </div>

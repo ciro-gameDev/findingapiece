@@ -1,0 +1,39 @@
+.store-tooltip {
+  position: fixed;
+  background-color: rgba(20, 20, 20, 0.95);
+  border: 2px solid #555;
+  border-radius: 4px;
+  padding: 0.5rem;
+  z-index: 1000;
+  min-width: 150px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  font-size: 0.85rem;
+}
+
+.tooltip-item-name {
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.tooltip-item-action {
+  color: #aaa;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.tooltip-item-price {
+  color: #ffd700;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 0.15rem;
+}
+
+.tooltip-item-stock {
+  color: #888;
+  font-size: 0.75rem;
+  font-style: italic;
+}
+

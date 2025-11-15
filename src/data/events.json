@@ -62,7 +62,7 @@
       "id": "tutorial_basics",
       "type": "event",
       "title": "The Basics",
-      "description": "'Excellent! Let me start with the basics. This is a text-based adventure where your choices matter. You'll see action buttons at the bottom - use the keys Q, W, E, A, S, or D to quickly select actions, or click them with your mouse.'\n\nThe guide points to the action bar. 'You can also use the Continue button with SPACEBAR when you need to advance through dialogue, and the Back button with BACKSPACE to go back.'",
+      "description": "'Excellent! Let me start with the basics. This is a text-based adventure where your choices matter. You'll see action buttons at the bottom - use the keys Q, W, E, A, S, or D to quickly select actions, or click them with your mouse.'\n\nThe guide points to the action bar. 'You can also use the Continue button with SPACEBAR when you need to advance through dialogue, and the Back button with BACKSPACE to go back.'\n\nNotice how the inventory is greyed out during this dialogue - you can see your items but can't interact with them.",
       "image": "/assets/placeholder.svg",
       "choices": [],
       "continue": {
@@ -70,7 +70,8 @@
         "action": "navigate",
         "target": "tutorial_combat"
       },
-      "back": null
+      "back": null,
+      "inventoryAccessible": false
     },
     {
       "id": "tutorial_combat",
@@ -163,6 +164,30 @@
       }
     },
     {
+      "id": "forest_find_item",
+      "type": "event",
+      "title": "Something Shiny",
+      "description": "As you walk through the forest, something catches your eye. Nestled among the fallen leaves, you spot a small, weathered chest partially buried in the ground. You kneel down and carefully open it.",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "take_item",
+          "text": "Take the item",
+          "action": "add_item",
+          "target": "forest_entrance",
+          "itemId": "key_rusty"
+        },
+        {
+          "id": "leave_item",
+          "text": "Leave it",
+          "action": "navigate",
+          "target": "forest_entrance"
+        }
+      ],
+      "continue": null,
+      "back": null
+    },
+    {
       "id": "town_explore",
       "type": "location",
       "title": "Exploring Town",
@@ -203,6 +228,12 @@
       "image": "/assets/placeholder.svg",
       "choices": [
         {
+          "id": "explore_forest",
+          "text": "Explore deeper into the forest",
+          "action": "navigate",
+          "target": "forest_find_item"
+        },
+        {
           "id": "enter_forest",
           "text": "Enter the forest",
           "action": "navigate",
@@ -230,6 +261,11 @@
       "title": "Blacksmith's Forge",
       "description": "The blacksmith's shop is hot and filled with the sound of hammering. A burly smith looks up from his work. 'What can I do for you?' he asks.",
       "image": "/assets/placeholder.svg",
+      "back": {
+        "text": "Leave Store",
+        "action": "navigate",
+        "target": "town_explore"
+      },
       "choices": [
         {
           "id": "buy_weapon",
@@ -329,6 +365,11 @@
       "title": "General Store",
       "description": "The general store is well-stocked with various supplies. The shopkeeper, an elderly woman, smiles warmly as you enter. 'Welcome! How can I help you today?'",
       "image": "/assets/placeholder.svg",
+      "back": {
+        "text": "Leave Store",
+        "action": "navigate",
+        "target": "town_explore"
+      },
       "choices": [
         {
           "id": "browse_supplies",
