@@ -1,0 +1,500 @@
+{
+  "events": [
+    {
+      "id": "town_start",
+      "type": "location",
+      "title": "Town Square",
+      "description": "You stand at the edge of a small, peaceful town. The streets are quiet, and the shops are open. The town square is bustling with a few merchants setting up their stalls.",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "explore_town",
+          "text": "Explore the town",
+          "action": "navigate",
+          "target": "town_explore"
+        },
+        {
+          "id": "go_forest",
+          "text": "Head to the forest",
+          "action": "navigate",
+          "target": "forest_entrance"
+        },
+        {
+          "id": "check_inventory",
+          "text": "Check your inventory",
+          "action": "open_inventory",
+          "target": null
+        },
+        {
+          "id": "tutorial",
+          "text": "Listen to the guide",
+          "action": "navigate",
+          "target": "tutorial_start"
+        }
+      ],
+      "continue": null,
+      "back": null
+    },
+    {
+      "id": "tutorial_start",
+      "type": "event",
+      "title": "Welcome, Traveler",
+      "description": "An old guide approaches you with a warm smile. 'Welcome to Finding a Peace, traveler! I see you're new here. Would you like me to explain how things work in this world?'",
+      "image": "/assets/placeholder.svg",
+      "choices": [  
+        {
+        "id": "yes_please",
+        "text": "Yes, please",
+        "action": "navigate",
+        "target": "tutorial_basics"
+      },
+      {
+        "id": "no_thanks",
+        "text": "No thanks",
+        "action": "navigate",
+        "target": "town_start"
+      }
+    ],
+      "continue": null,
+      "back": null
+    },
+    {
+      "id": "tutorial_basics",
+      "type": "event",
+      "title": "The Basics",
+      "description": "'Excellent! Let me start with the basics. This is a text-based adventure where your choices matter. You'll see action buttons at the bottom - use the keys Q, W, E, A, S, or D to quickly select actions, or click them with your mouse.'\n\nThe guide points to the action bar. 'You can also use the Continue button with SPACEBAR when you need to advance through dialogue, and the Back button with BACKSPACE to go back.'",
+      "image": "/assets/placeholder.svg",
+      "choices": [],
+      "continue": {
+        "text": "Continue",
+        "action": "navigate",
+        "target": "tutorial_combat"
+      },
+      "back": null
+    },
+    {
+      "id": "tutorial_combat",
+      "type": "event",
+      "title": "Combat System",
+      "description": "'Combat in this world works on a tick system - similar to Runescape if you've played that. Both you and your enemies act on specific ticks. You can configure your combat actions before battle, and they'll execute automatically when their cooldowns are ready.'\n\nThe guide demonstrates with a quick gesture. 'The tick speed can be adjusted in settings to make combat easier or more challenging. Faster ticks mean less time to react!'",
+      "image": "/assets/placeholder.svg",
+      "choices": [],
+      "continue": {
+        "text": "Continue",
+        "action": "navigate",
+        "target": "tutorial_skills"
+      },
+      "back": {
+        "text": "Back",
+        "action": "navigate",
+        "target": "tutorial_basics"
+      }
+    },
+    {
+      "id": "tutorial_skills",
+      "type": "event",
+      "title": "Skills and Progression",
+      "description": "'As you explore and complete actions, you'll gain experience in various skills. Skills like Combat, Foraging, and Alchemy can be trained by performing related actions. Each skill level unlocks new abilities and provides stat bonuses.'\n\nThe guide's eyes light up. 'For example, training your Foraging skill will let you gather better resources, while Alchemy lets you craft powerful potions. The more you practice, the stronger you become!'",
+      "image": "/assets/placeholder.svg",
+      "choices": [],
+      "continue": {
+        "text": "Continue",
+        "action": "navigate",
+        "target": "tutorial_inventory"
+      },
+      "back": {
+        "text": "Back",
+        "action": "navigate",
+        "target": "tutorial_combat"
+      }
+    },
+    {
+      "id": "tutorial_inventory",
+      "type": "event",
+      "title": "Inventory and Items",
+      "description": "'Your inventory is displayed on the right side of the screen. It's a grid system where you can store items. Some items stack, while others take individual slots. You can right-click items to see all available actions, or left-click for the default action like Use, Wield, or Consume.'\n\nThe guide pulls out a small pouch. 'Items can be combined to create new things, or used to upgrade existing equipment. Experiment and discover recipes!'",
+      "image": "/assets/placeholder.svg",
+      "choices": [],
+      "continue": {
+        "text": "Continue",
+        "action": "navigate",
+        "target": "tutorial_world"
+      },
+      "back": {
+        "text": "Back",
+        "action": "navigate",
+        "target": "tutorial_skills"
+      }
+    },
+    {
+      "id": "tutorial_world",
+      "type": "event",
+      "title": "Exploring the World",
+      "description": "'The world is open for you to explore! You can move between locations using the action buttons. Some events are random, while others are part of the main storyline. There are multiple endings to discover, so don't be afraid to explore different paths.'\n\nThe guide looks thoughtful. 'Remember, your choices have consequences. Some paths lead to different outcomes than others. There's no single 'right' way to play - find your own peace.'",
+      "image": "/assets/placeholder.svg",
+      "choices": [],
+      "continue": {
+        "text": "Continue",
+        "action": "navigate",
+        "target": "tutorial_end"
+      },
+      "back": {
+        "text": "Back",
+        "action": "navigate",
+        "target": "tutorial_inventory"
+      }
+    },
+    {
+      "id": "tutorial_end",
+      "type": "event",
+      "title": "You're Ready!",
+      "description": "'That covers the basics! You're ready to begin your journey. Remember: use the action buttons for choices, Continue for dialogue, and explore at your own pace. Good luck, traveler - may you find what you're looking for.'\n\nThe guide bows slightly and steps back, leaving you to begin your adventure.",
+      "image": "/assets/placeholder.svg",
+      "choices": [],
+      "continue":         {
+        "text": "Begin exploring",
+        "action": "navigate",
+        "target": "town_start"
+      },
+      "back": {
+        "text": "Back",
+        "action": "navigate",
+        "target": "tutorial_world"
+      }
+    },
+    {
+      "id": "town_explore",
+      "type": "location",
+      "title": "Exploring Town",
+      "description": "You wander through the cobblestone streets. You pass by a blacksmith's forge, a general store, and a small inn. The townsfolk nod politely as you pass.",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "visit_blacksmith",
+          "text": "Visit the blacksmith",
+          "action": "navigate",
+          "target": "blacksmith_shop"
+        },
+        {
+          "id": "visit_store",
+          "text": "Visit the general store",
+          "action": "navigate",
+          "target": "general_store"
+        },
+        {
+          "id": "return_square",
+          "text": "Return to town square",
+          "action": "navigate",
+          "target": "town_start"
+        }
+      ],
+      "continue": null,
+      "back": {
+        "text": "Back",
+        "action": "navigate",
+        "target": "town_start"
+      }
+    },
+    {
+      "id": "forest_entrance",
+      "type": "location",
+      "title": "Forest Entrance",
+      "description": "You reach the edge of the forest. Tall trees loom overhead, and the path ahead disappears into the shadows. You can hear birds chirping in the distance, but something feels... off.",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "enter_forest",
+          "text": "Enter the forest",
+          "action": "navigate",
+          "target": "forest_deep"
+        },
+        {
+          "id": "forage_edges",
+          "text": "Forage at the forest edge",
+          "action": "skill_check",
+          "target": "forage_success",
+          "skill": "foraging",
+          "difficulty": 1
+        },
+        {
+          "id": "return_town",
+          "text": "Return to town",
+          "action": "navigate",
+          "target": "town_start"
+        }
+      ]
+    },
+    {
+      "id": "blacksmith_shop",
+      "type": "location",
+      "title": "Blacksmith's Forge",
+      "description": "The blacksmith's shop is hot and filled with the sound of hammering. A burly smith looks up from his work. 'What can I do for you?' he asks.",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "buy_weapon",
+          "text": "Browse weapons",
+          "action": "navigate",
+          "target": "blacksmith_weapons"
+        },
+        {
+          "id": "leave_blacksmith",
+          "text": "Leave the shop",
+          "action": "navigate",
+          "target": "town_explore"
+        }
+      ]
+    },
+    {
+      "id": "forage_success",
+      "type": "event",
+      "title": "Foraging Success",
+      "description": "You carefully search the forest edge and find some useful herbs and berries. You gather them into your pack.",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "continue_forest",
+          "text": "Continue exploring",
+          "action": "navigate",
+          "target": "forest_entrance"
+        }
+      ]
+    },
+    {
+      "id": "forest_deep",
+      "type": "location",
+      "title": "Deep in the Forest",
+      "description": "You venture deeper into the forest. The trees grow thicker here, and the sunlight barely filters through the canopy. You hear rustling in the underbrush nearby.",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "investigate_sound",
+          "text": "Investigate the sound",
+          "action": "navigate",
+          "target": "forest_encounter"
+        },
+        {
+          "id": "continue_deeper",
+          "text": "Continue deeper",
+          "action": "navigate",
+          "target": "forest_ancient"
+        },
+        {
+          "id": "return_entrance",
+          "text": "Return to forest entrance",
+          "action": "navigate",
+          "target": "forest_entrance"
+        }
+      ]
+    },
+    {
+      "id": "forest_encounter",
+      "type": "event",
+      "title": "Strange Encounter",
+      "description": "As you approach the source of the sound, you see a small creature darting between the trees. It's a forest sprite! It looks at you curiously before disappearing into the foliage, leaving behind a small glowing stone.",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "take_stone",
+          "text": "Take the glowing stone",
+          "action": "navigate",
+          "target": "forest_stone_taken"
+        },
+        {
+          "id": "leave_stone",
+          "text": "Leave it and continue",
+          "action": "navigate",
+          "target": "forest_deep"
+        }
+      ]
+    },
+    {
+      "id": "forest_stone_taken",
+      "type": "event",
+      "title": "Mysterious Stone",
+      "description": "You pick up the glowing stone. It feels warm in your hand and pulses with a soft light. You sense it might be important, so you carefully place it in your pack.",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "continue_after_stone",
+          "text": "Continue exploring",
+          "action": "navigate",
+          "target": "forest_deep"
+        }
+      ]
+    },
+    {
+      "id": "general_store",
+      "type": "location",
+      "title": "General Store",
+      "description": "The general store is well-stocked with various supplies. The shopkeeper, an elderly woman, smiles warmly as you enter. 'Welcome! How can I help you today?'",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "browse_supplies",
+          "text": "Browse supplies",
+          "action": "navigate",
+          "target": "store_supplies"
+        },
+        {
+          "id": "talk_shopkeeper",
+          "text": "Talk to the shopkeeper",
+          "action": "navigate",
+          "target": "store_conversation"
+        },
+        {
+          "id": "leave_store",
+          "text": "Leave the store",
+          "action": "navigate",
+          "target": "town_explore"
+        }
+      ]
+    },
+    {
+      "id": "blacksmith_weapons",
+      "type": "location",
+      "title": "Weapon Selection",
+      "description": "The blacksmith shows you his collection of weapons. There's a basic iron sword, a sturdy mace, and a well-crafted dagger. 'Which one catches your eye?'",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "buy_sword",
+          "text": "Examine the sword",
+          "action": "navigate",
+          "target": "blacksmith_sword"
+        },
+        {
+          "id": "back_blacksmith",
+          "text": "Back to shop",
+          "action": "navigate",
+          "target": "blacksmith_shop"
+        }
+      ]
+    },
+    {
+      "id": "blacksmith_sword",
+      "type": "event",
+      "title": "Iron Sword",
+      "description": "The blacksmith hands you the iron sword. It's well-balanced and sharp. 'This'll serve you well out there,' he says. 'That'll be 50 gold pieces.'",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "buy_it",
+          "text": "Purchase the sword",
+          "action": "navigate",
+          "target": "blacksmith_weapons"
+        },
+        {
+          "id": "decline",
+          "text": "Maybe later",
+          "action": "navigate",
+          "target": "blacksmith_weapons"
+        }
+      ]
+    },
+    {
+      "id": "store_supplies",
+      "type": "location",
+      "title": "Store Supplies",
+      "description": "The store has various supplies: health potions, food rations, torches, and basic tools. Everything looks reasonably priced.",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "back_store",
+          "text": "Back to store",
+          "action": "navigate",
+          "target": "general_store"
+        }
+      ]
+    },
+    {
+      "id": "store_conversation",
+      "type": "event",
+      "title": "Shopkeeper's Tale",
+      "description": "The shopkeeper tells you about recent strange happenings in the forest. 'People say they've seen glowing lights deep in the woods at night. Be careful if you're heading that way.'",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "ask_more",
+          "text": "Ask for more details",
+          "action": "navigate",
+          "target": "store_conversation"
+        },
+        {
+          "id": "thank_leave",
+          "text": "Thank her and leave",
+          "action": "navigate",
+          "target": "general_store"
+        }
+      ],
+      "continue": {
+        "text": "Continue listening",
+        "action": "navigate",
+        "target": "store_conversation"
+      },
+      "back": {
+        "text": "Back",
+        "action": "navigate",
+        "target": "general_store"
+      }
+    },
+    {
+      "id": "forest_ancient",
+      "type": "location",
+      "title": "Ancient Grove",
+      "description": "You discover an ancient grove deep in the forest. The trees here are massive and ancient, and there's an otherworldly stillness to the place. In the center, you see an old stone altar covered in glowing runes.",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "examine_altar",
+          "text": "Examine the altar",
+          "action": "navigate",
+          "target": "forest_altar"
+        },
+        {
+          "id": "leave_grove",
+          "text": "Leave the grove",
+          "action": "navigate",
+          "target": "forest_deep"
+        }
+      ]
+    },
+    {
+      "id": "forest_altar",
+      "type": "event",
+      "title": "Mysterious Altar",
+      "description": "As you approach the altar, the runes begin to glow brighter. You feel a strange energy emanating from the stone. If you have the glowing stone from the sprite, it begins to pulse in response.",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "place_stone",
+          "text": "Place the stone on the altar",
+          "action": "navigate",
+          "target": "forest_altar_activated"
+        },
+        {
+          "id": "step_back",
+          "text": "Step back",
+          "action": "navigate",
+          "target": "forest_ancient"
+        }
+      ]
+    },
+    {
+      "id": "forest_altar_activated",
+      "type": "event",
+      "title": "The Altar Awakens",
+      "description": "As you place the stone on the altar, the runes flare with brilliant light. A voice echoes in your mind: 'You have found the first piece. There are more to discover. Your journey has only just begun.'",
+      "image": "/assets/placeholder.svg",
+      "choices": [
+        {
+          "id": "continue_journey",
+          "text": "Continue your journey",
+          "action": "navigate",
+          "target": "forest_ancient"
+        }
+      ]
+    }
+  ]
+}
+
