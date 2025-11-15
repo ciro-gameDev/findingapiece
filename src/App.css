@@ -44,11 +44,13 @@
 }
 
 .sidebar-left {
-  /* Left sidebar */
+  /* Left sidebar - no additional styling needed */
+  min-width: 0;
 }
 
 .sidebar-right {
-  /* Right sidebar */
+  /* Right sidebar - no additional styling needed */
+  min-width: 0;
 }
 
 /* Center Column */
@@ -61,9 +63,12 @@
 }
 
 .center-top {
-  /* Top section: Main Image */
+  /* Top section: Main Image - fixed size, doesn't scale */
   display: flex;
   flex-shrink: 0;
+  height: 420px; /* Fixed height - portrait (250px) + status (120px) - gap (50px) = ~320px */
+  min-height: 420px;
+  max-height: 420px;
 }
 
 .center-bottom {
@@ -136,46 +141,29 @@
 
 /* Center Column Elements */
 .main-image {
-  /* Main image window */
+  /* Main image window - fixed size container */
   width: 100%;
-  flex: 2;
-  min-height: 450px; /* Can adjust as needed */
+  height: 100%;
+  min-height: 0; /* Container size is controlled by center-top */
 }
 
 
 .action-bar {
-  /* Action bar - fixed height */
+  /* Action bar - fixed height, must not grow */
   flex-shrink: 0;
+  flex-grow: 0;
   height: 120px;
   min-height: 120px;
+  max-height: 120px;
+  overflow: hidden;
 }
 
 .main-text {
   /* Main text display - takes remaining space */
   flex: 1;
-  overflow-y: auto;
-  align-items: flex-start;
-  justify-content: flex-start;
-  padding: 1rem;
   min-height: 0; /* Allow flex shrinking */
+  /* TextWindow component handles its own padding and overflow */
 }
 
-/* Scrollbar styling */
-.main-text::-webkit-scrollbar {
-  width: 10px;
-}
-
-.main-text::-webkit-scrollbar-track {
-  background: #1a1a1a;
-  border-radius: 5px;
-}
-
-.main-text::-webkit-scrollbar-thumb {
-  background: #4a4a4a;
-  border-radius: 5px;
-}
-
-.main-text::-webkit-scrollbar-thumb:hover {
-  background: #5a5a5a;
-}
+/* Scrollbar styling is handled by TextWindow component */
 
