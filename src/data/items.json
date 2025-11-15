@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "id": "sword_basic",
+      "name": "Basic Sword",
+      "description": "A simple iron sword.",
+      "type": "weapon",
+      "stackable": false,
+      "maxQuantity": 1,
+      "image": "/assets/items/sword_basic.png",
+      "stats": {
+        "damage": 10,
+        "accuracy": 0.8,
+        "cooldown": 3
+      }
+    },
+    {
+      "id": "potion_health",
+      "name": "Health Potion",
+      "description": "Restores 50 HP.",
+      "type": "consumable",
+      "stackable": true,
+      "maxQuantity": 99,
+      "image": "/assets/items/potion_health.png",
+      "effect": {
+        "type": "heal",
+        "value": 50
+      }
+    }
+  ]
+}
+

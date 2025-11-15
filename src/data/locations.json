@@ -1,0 +1,53 @@
+{
+  "locations": [
+    {
+      "id": "town",
+      "name": "Town",
+      "description": "A small, peaceful town. The streets are quiet, and the shops are open.",
+      "image": "/assets/locations/town.png",
+      "connections": {
+        "north": "forest",
+        "east": null,
+        "south": null,
+        "west": null
+      }
+    },
+    {
+      "id": "forest",
+      "name": "Forest",
+      "description": "A dense forest with tall trees. You can hear birds chirping in the distance.",
+      "image": "/assets/locations/forest.png",
+      "connections": {
+        "north": "deepwoods",
+        "east": null,
+        "south": "town",
+        "west": "hidden_creek"
+      }
+    },
+    {
+      "id": "hidden_creek",
+      "name": "Hidden Creek",
+      "description": "A secluded creek hidden deep in the forest. The water is clear and cool.",
+      "image": "/assets/locations/hidden_creek.png",
+      "connections": {
+        "north": null,
+        "east": "forest",
+        "south": null,
+        "west": null
+      }
+    },
+    {
+      "id": "deepwoods",
+      "name": "Deep Woods",
+      "description": "The deepest part of the forest. It's dark and foreboding here.",
+      "image": "/assets/locations/deepwoods.png",
+      "connections": {
+        "north": null,
+        "east": null,
+        "south": "forest",
+        "west": null
+      }
+    }
+  ]
+}
+
